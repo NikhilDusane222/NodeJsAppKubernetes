@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: nodejs-deployment
+   labels:
+     app: {{ .Values.Deployments.app_name }}
+spec:
+   replicas: {{ .Values.Deployments.app_replicas }}
+   selector:
+     matchLabels:
+       app: {{ .Values.Deployments.app_name }}
+   template:
+     metadata:
+       labels:
+         app: {{ .Values.Deployments.app_name }}
+     spec:
+       containers:
+       - name: {{ .Values.Deployments.app_name }}
+         image: {{ .Values.Deployments.app_url }}
+         imagePullPolicy: Always
+         env:
+         - name: dbhost
+           value: {{ .Values.Deployments.db_host }}

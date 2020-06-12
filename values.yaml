@@ -1,0 +1,18 @@
+replicacount: 1
+
+Deployments:
+  app_name: nodejs
+  db_host: mongodb
+  db_name: nodejs
+  app_port: 3000
+  db_port: 27017
+  app_url: 296838539158.dkr.ecr.ap-south-1.amazonaws.com/nodejs:nodejs
+  app_replicas: 1
+  db_replicas: 1
+
+Service:
+  app_name: nodejs
+  db_name: mongodb
+  app_target_port: 3000
+  app_svc: 80
+  db_svc: 27017
